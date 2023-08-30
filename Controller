@@ -1,0 +1,35 @@
+package introduction;
+
+public class GameController {
+    public static void main(String[] args) {
+        BoardModel boardModel = new BoardModel();
+        int currentPlayer = BoardModel.PLAYER_X;
+        int totalMoves = 0;
+
+        while (totalMoves < 9) {
+            BoardView.printBoard(boardModel.getBoard());
+            System.out.println("Turn of Player " + (currentPlayer == BoardModel.PLAYER_X ? "X" : "O"));
+
+            int row, col;
+            do {
+                row = BoardView.getInput("Enter row (0-2): ");
+                col = BoardView.getInput("Enter column (0-2): ");
+            } while (!boardModel.makeMove(currentPlayer, row, col));
+
+            totalMoves++;
+
+            if (boardModel.checkWin(currentPlayer)) {
+                BoardView.printBoard(boardModel.getBoard());
+                BoardView.printWinner(currentPlayer);
+                break;
+            }
+
+            currentPlayer = (currentPlayer + 1) % 2;
+        }
+
+        if (totalMoves == 9) {
+            BoardView.printBoard(boardModel.getBoard());
+            BoardView.printDraw();
+        }
+    }
+}
