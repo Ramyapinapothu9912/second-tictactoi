@@ -1,0 +1,29 @@
+package introduction;
+
+import java.util.Scanner;
+
+public class BoardView {
+    public static void printBoard(int[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] == BoardModel.PLAYER_X ? "X "
+                        : (board[i][j] == BoardModel.PLAYER_O ? "O " : ". "));
+            }
+            System.out.println();
+        }
+    }
+
+    public static void printWinner(int currentPlayer) {
+        System.out.println("=========Player " + (currentPlayer == BoardModel.PLAYER_X ? "X" : "O") + " wins=========");
+    }
+
+    public static void printDraw() {
+        System.out.println("Sorry, all the cells are filled. It's a draw!");
+    }
+
+    public static int getInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(prompt);
+        return scanner.nextInt();
+    }
+}
