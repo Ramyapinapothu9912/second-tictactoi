@@ -1,0 +1,37 @@
+package introduction;
+
+public class BoardModel {
+    private int[][] board;
+    private static final int EMPTY = -1;
+    private static final int PLAYER_X = 1;
+    private static final int PLAYER_O = 0;
+
+    public BoardModel() {
+        board = new int[3][3];
+        initializeBoard();
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = EMPTY;
+            }
+        }
+    }
+
+    public boolean makeMove(int player, int row, int col) {
+        if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row][col] != EMPTY) {
+            return false;
+        }
+        board[row][col] = player;
+        return true;
+    }
+
+    public boolean checkWin(int player) {
+        // ... (same as before)
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+}
