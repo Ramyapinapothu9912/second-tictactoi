@@ -28,7 +28,31 @@ public class BoardModel {
     }
 
     public boolean checkWin(int player) {
-        // ... (same as before)
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
+            {
+            	//here winning the rows
+                return true;
+            }
+            if (board[0][i] == player && board[1][i] == player && board[2][i] == player)
+            {
+            	//here  winning the columns we getting winning Column win
+            	return true; 
+            }
+        }
+        if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
+        {
+        	//here winning the right diagnol
+            return true;
+        }
+        if (board[0][2] == player && board[1][1] == player && board[2][0] == player)
+        {
+        	//here winning the left diagonal
+            return true;
+        }
+        return false;
+        
     }
 
     public int[][] getBoard() {
